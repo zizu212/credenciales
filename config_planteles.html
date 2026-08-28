@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+  <title>Configuracion - Planteles</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="dashboard.css?v=1783375380503" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <div class="custom-titlebar"></div>
+  <div id="dashboard" style="display:block;" data-page="config_planteles">
+    <div class="app-shell">
+      <aside id="sidebar-slot" class="sidebar-slot"></aside>
+      <main class="app-main" id="dashboard-content">
+        <div class="panel">
+          <h2>Configuracion de Planteles</h2>
+
+          <form id="plantel-form" class="row g-2 align-items-end mb-3">
+            <input type="hidden" id="plantel-id">
+            <div class="col-md-4">
+              <label for="plantel-nombre" class="form-label">Nombre</label>
+              <input id="plantel-nombre" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+              <label for="plantel-cct" class="form-label">CCT</label>
+              <input id="plantel-cct" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+              <label for="plantel-telefono" class="form-label">Telefono</label>
+              <input id="plantel-telefono" class="form-control">
+            </div>
+            <div class="col-md-1 d-grid">
+              <button class="btn btn-success" type="submit">Guardar</button>
+            </div>
+          </form>
+
+          <div id="plantel-status" class="alert d-none" role="alert"></div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm align-middle">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>CCT</th>
+                  <th>Telefono</th>
+                  <th style="width:200px;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="planteles-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js?v=1787933091770"></script>
+  <script src="utils.js?v=1787933091770"></script>
+  <script src="renderer_config_planteles.js?v=1787933091770"></script>
+</body>
+</html>
+
+

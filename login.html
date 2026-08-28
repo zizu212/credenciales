@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+      <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credenciales - Iniciar Sesion</title>
+    <style>
+      html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fa}
+      .center-wrapper{height:100%;display:flex;align-items:center;justify-content:center;padding:20px}
+      .login-card{width:100%;max-width:420px;background:#fff;border-radius:14px;padding:28px;box-shadow:0 6px 24px rgba(15,30,60,0.08);box-sizing:border-box}
+      .login-title{margin:0 0 6px 0;font-size:20px;color:#202124;font-weight:500}
+      .card-logo{display:block;margin:0 auto 14px auto;width:280px;max-width:75%}
+      .login-sub{margin:0 0 16px 0;color:#5f6368;font-size:14px}
+      .form-group{margin-bottom:14px}
+      label{display:block;margin-bottom:6px;color:#3c4043;font-size:13px}
+      input.form-control{width:100%;padding:10px 12px;border:1px solid #dfe1e5;border-radius:6px;font-size:15px}
+      input.form-control:focus{outline:none;border-color:#1a73e8;box-shadow:0 0 0 3px rgba(26,115,232,0.08)}
+      .btn-primary{width:100%;padding:10px;border-radius:8px;border:none;background:#4CAF50;color:#fff;font-size:15px;cursor:pointer}
+      .footer-links{text-align:center;margin-top:14px;font-size:13px;color:#5f6368}
+      .create-link{color:#1a73e8;text-decoration:none;font-weight:500}
+    
+.custom-titlebar {
+  height: 30px;
+  background-color: #53994d;
+  -webkit-app-region: drag;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+::-webkit-scrollbar { display: none; }
+</style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+  <body>
+  <div class="custom-titlebar"></div>
+    <div class="center-wrapper">
+      <div class="login-card">
+        <img class="card-logo" src="logotipo.png" alt="Logotipo institucional">
+        <h2 class="login-title">Iniciar Sesión</h2>
+        <p class="login-sub">Introduce tus credenciales para acceder</p>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username">Usuario</label>
+            <input id="username" class="form-control" type="text" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input id="password" class="form-control" type="password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn-primary">Entrar</button>
+            <div style="text-align:center;margin-top:8px;font-size:18px;letter-spacing:4px;color:#1a73e8">⠊⠗⠍</div>
+          </div>
+          <div id="login-error" style="display:none;color:#d93025;margin-top:6px;font-size:13px"></div>
+        </form>
+        <div class="footer-links" id="login-create-user-box">¿No tienes cuenta? <a class="create-link" href="nuevo_usuario.html">Crear nuevo usuario</a></div>
+      </div>
+    </div>
+    <script src="utils.js?v=1787933091770"></script>
+  <script src="renderer_login.js?v=1787933091770"></script>
+  </body>
+</html>
+
+
+

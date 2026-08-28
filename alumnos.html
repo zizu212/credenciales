@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+  <title>Credenciales - Alumnos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css" rel="stylesheet">
+  <link href="dashboard.css?v=1783375380503" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <div class="custom-titlebar"></div>
+  <div id="dashboard" style="display:block;" data-page="alumnos">
+    <div class="app-shell">
+      <aside id="sidebar-slot" class="sidebar-slot"></aside>
+      <main class="app-main" id="dashboard-content">
+        <div class="panel">
+        <h2>Credenciales - Alumnos</h2>
+        <div class="d-flex gap-2 flex-wrap mb-3 align-items-center">
+          <input type="text" class="form-control" id="search-input" placeholder="Buscar por nombre, CURP, no. control, carrera..." style="max-width: 460px;">
+          <button class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#alumnoModal">Agregar Alumno</button>
+        </div>
+        <div class="table-responsive" id="alumnos-table-container">
+          <table class="table table-bordered table-hover table-sm align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Foto</th>
+                <th>Nombres</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Carrera</th>
+                <th>Turno</th>
+                <th class="d-none">Plantel</th>
+                <th>CURP</th>
+                <th>No Control</th>
+                <th class="d-none">Clave</th>
+                <th class="d-none">Contacto Emergencia</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="alumnos-table-body">
+              <tr>
+                <td colspan="13" class="text-center text-muted">Cargando registros...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mt-2" id="pagination-controls">
+          <div class="d-flex align-items-center gap-2">
+            <label for="page-size-select" class="mb-0 small text-muted">Registros por hoja</label>
+            <select id="page-size-select" class="form-select form-select-sm" style="width:auto;">
+              <option value="10">10</option>
+              <option value="20" selected>20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="all">Todos</option>
+            </select>
+          </div>
+          <div class="d-flex align-items-center gap-2" id="page-nav"></div>
+        </div>
+        <div id="empty-state" class="alert alert-secondary d-none">No hay registros para mostrar.</div>
+        <!-- Modal -->
+        <div class="modal fade" id="alumnoModal" tabindex="-1" aria-labelledby="alumnoModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="alumnoModalLabel">Agregar Alumno</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="alumno-form" enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="col-md-6 mb-2">
+                      <label>NOMBRE(S)</label>
+                      <input type="text" class="form-control" id="nombres" required>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <label>APELLIDO PATERNO</label>
+                      <input type="text" class="form-control" id="apellido_paterno" required>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <label>APELLIDO MATERNO</label>
+                      <input type="text" class="form-control" id="apellido_materno" required>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <label>CARRERA</label>
+                      <select class="form-select" id="carrera" required>
+                        <option value="">Selecciona una carrera</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <label>TURNO</label>
+                      <select class="form-select" id="turno" required>
+                        <option value="">Selecciona un turno</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <label>PLANTEL</label>
+                      <select class="form-select" id="plantel" required>
+                        <option value="">Selecciona un plantel</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <label>CURP</label>
+                      <input type="text" class="form-control" id="curp" required maxlength="18" pattern="[A-Za-z]{4}[0-9]{6}[HhMm][A-Za-z]{5}[A-Za-z0-9]{2}" title="CURP de 18 caracteres: se valida estructura hasta el caracter 16.">
+                      <small class="text-muted">CURP de 18 caracteres: se valida formato hasta el caracter 16; los ultimos 2 deben ser alfanumericos.</small>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <label>No DE CONTROL</label>
+                      <input type="text" class="form-control" id="no_control" required maxlength="14" pattern="\d{14}" inputmode="numeric" title="La matricula debe tener 14 digitos numericos">
+                      <small class="text-muted">Debe contener 14 digitos numericos.</small>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <label>CLAVE (CCT)</label>
+                      <input type="text" class="form-control locked-field" id="clave" required>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <label>Foto</label>
+                      <input type="file" class="form-control" id="foto">
+                      <small class="text-muted d-block mt-1" id="foto-crop-status">Al seleccionar una imagen, se abrira el recorte de credencial.</small>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                      <label>TELEFONO DE CONTACTO</label>
+                      <input type="text" class="form-control locked-field" id="contacto_emergencia">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-success mt-3">Guardar Alumno</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="fotoCropModal" tabindex="-1" aria-labelledby="fotoCropModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="fotoCropModalLabel">Ajustar foto de credencial</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p class="small text-muted mb-2">Mueve y escala la imagen para que encaje en el marco fijo. El archivo final se guardara con tamano uniforme.</p>
+                <div class="border rounded p-2 bg-light d-flex justify-content-center">
+                  <img id="cropper-image" alt="Vista previa de recorte" style="display:block;max-width:100%;max-height:60vh;">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="crop-cancel-btn" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="crop-confirm-btn">Usar foto recortada</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js?v=1787933091770"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js?v=1787933091770"></script>
+  <script src="utils.js?v=1787933091770"></script>
+  <script src="renderer.js?v=1787933091770"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+  <title>Configuracion - Usuarios</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="dashboard.css?v=1783375380503" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <div class="custom-titlebar"></div>
+  <div id="dashboard" style="display:block;" data-page="config_usuarios">
+    <div class="app-shell">
+      <aside id="sidebar-slot" class="sidebar-slot"></aside>
+      <main class="app-main" id="dashboard-content">
+        <div class="panel">
+          <h2>Configuracion de Usuarios</h2>
+
+          <form id="usuario-form" class="row g-2 align-items-end mb-3">
+            <input type="hidden" id="usuario-id">
+            <div class="col-md-3">
+              <label for="usuario-nombre" class="form-label">Nombre completo</label>
+              <input id="usuario-nombre" class="form-control" required>
+            </div>
+            <div class="col-md-2">
+              <label for="usuario-username" class="form-label">Usuario</label>
+              <input id="usuario-username" class="form-control" required>
+            </div>
+            <div class="col-md-2">
+              <label for="usuario-password" class="form-label">Contrasena</label>
+              <input id="usuario-password" type="password" class="form-control" placeholder="Solo para nuevo/cambio">
+            </div>
+            <div class="col-md-2">
+              <label for="usuario-rol" class="form-label">Rol</label>
+              <select id="usuario-rol" class="form-select" required>
+                <option value="consulta">Consulta</option>
+                <option value="capturista">Capturista</option>
+                <option value="admin">Administrador</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="usuario-plantel" class="form-label">Plantel</label>
+              <select id="usuario-plantel" class="form-select" required></select>
+            </div>
+            <div class="col-md-1 d-grid">
+              <button class="btn btn-success" type="submit">Guardar</button>
+            </div>
+          </form>
+
+          <div id="usuario-status" class="alert d-none" role="alert"></div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm align-middle">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Usuario</th>
+                  <th>Rol</th>
+                  <th>Plantel</th>
+                  <th style="width:200px;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="usuarios-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js?v=1787933091770"></script>
+  <script src="utils.js?v=1787933091770"></script>
+  <script src="renderer_config_usuarios.js?v=1787933091770"></script>
+</body>
+</html>
+
+
