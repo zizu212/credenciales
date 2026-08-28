@@ -322,7 +322,6 @@ function deleteOldPhotoHelper(photoPath) {
     }
   }
 }
-}
 
 function saveFotoFileInFolder(file, folderName, callback) {
   if (!file) return callback(null, '');
