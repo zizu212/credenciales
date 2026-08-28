@@ -617,6 +617,7 @@ function updateAlumno(id, data, callback) {
     );
     });
   });
+  });
 }
 
 function saveEmpleado(data, file, callback) {
